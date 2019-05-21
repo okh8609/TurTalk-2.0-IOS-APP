@@ -13,9 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let fm = FileManager.default
+        
+        // 取得 Property List.plist 在專案中的路徑
+        let src = Bundle.main.path(forResource: "Helper", ofType: "plist")
+        
+        // 取得要複製到的目的路徑
+        let dst = NSHomeDirectory() + "/Documents/Helper.plist"
+        
+        // 檢查目的路徑的 Property List.plist 檔案是否已經存在，如果不存在則複製檔案
+        if !fm.fileExists(atPath: dst) {
+            try! fm.copyItem(atPath: src!, toPath: dst)
+        }
+        
         return true
     }
 

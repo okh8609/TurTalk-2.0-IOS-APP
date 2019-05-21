@@ -14,6 +14,8 @@
 		B5329CEA22930B25009222AF /* TT_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5329CE922930B24009222AF /* TT_Logo.png */; };
 		B5C66555229415E400041B6A /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C66554229415E400041B6A /* RegViewController.swift */; };
 		B5C66557229420D900041B6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C66556229420D900041B6A /* LoginViewController.swift */; };
+		B5C6655922942F4F00041B6A /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6655822942F4F00041B6A /* InviteViewController.swift */; };
+		B5C6655B2294320100041B6A /* Helper.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C6655A2294320100041B6A /* Helper.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		B5329CE922930B24009222AF /* TT_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TT_Logo.png; sourceTree = "<group>"; };
 		B5C66554229415E400041B6A /* RegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 		B5C66556229420D900041B6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B5C6655822942F4F00041B6A /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
+		B5C6655A2294320100041B6A /* Helper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Helper.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				B5329CE32292B2B8009222AF /* Info.plist */,
 				B5C66554229415E400041B6A /* RegViewController.swift */,
 				B5C66556229420D900041B6A /* LoginViewController.swift */,
+				B5C6655822942F4F00041B6A /* InviteViewController.swift */,
+				B5C6655A2294320100041B6A /* Helper.plist */,
 			);
 			path = TT2_IOS;
 			sourceTree = "<group>";
@@ -128,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C6655B2294320100041B6A /* Helper.plist in Resources */,
 				B5329CE22292B2B8009222AF /* LaunchScreen.storyboard in Resources */,
 				B5329CEA22930B25009222AF /* TT_Logo.png in Resources */,
 				B5329CDF2292B2B8009222AF /* Assets.xcassets in Resources */,
@@ -145,6 +152,7 @@
 				B5C66557229420D900041B6A /* LoginViewController.swift in Sources */,
 				B5329CD82292B2B6009222AF /* AppDelegate.swift in Sources */,
 				B5C66555229415E400041B6A /* RegViewController.swift in Sources */,
+				B5C6655922942F4F00041B6A /* InviteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
