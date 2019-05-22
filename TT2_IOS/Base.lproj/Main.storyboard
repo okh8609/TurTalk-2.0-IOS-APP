@@ -114,6 +114,10 @@
                         <viewLayoutGuide key="safeArea" id="S6X-Ai-ZCJ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Login" image="Tab1_Login" id="mRe-Wp-U9n"/>
+                    <connections>
+                        <outlet property="email" destination="sWQ-oJ-eMC" id="oWG-4U-JfH"/>
+                        <outlet property="passwd" destination="NQo-hg-ezF" id="uhl-bI-zQM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAZ-9w-pgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

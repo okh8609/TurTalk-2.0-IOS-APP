@@ -10,6 +10,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var passwd: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,21 +24,12 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func SignInBtnClick(_ sender: Any) {
-
-
-        
-        
-        
-        
-        
-        
-        
         let path = NSHomeDirectory() + "/Documents/Helper.plist"
         if let plist = NSMutableDictionary(contentsOfFile: path) {
             if let API_URL = plist["API_URL"] {
 
                 //要送出的資料
-                let json: [String: Any] = ["email" : "okh8609@gmail.com" , "password" : "123456788"]
+                let json: [String: Any] = ["email" : email.text ?? "" , "password" : passwd.text ?? ""]
                 let jsonData = try? JSONSerialization.data(withJSONObject: json)
 
                 
@@ -55,15 +49,40 @@ class LoginViewController: UIViewController {
                 // NSURLSessionDataTask 為讀取資料，讀取完成的資料會放在 data 中
                 let dataTask = session.dataTask(with: request) { (data, response, error) in
                     if let data = data {
-                        let html = String(data: data, encoding: .utf8)
-                        print(String(describing: html))
+                        do {
+                            // 解析 JSON
+                            let rrr = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary
+                            
+                            // 取出結果
+                            // print("D1: \(rrr["Success"] as! Bool)")
+                            // print("D2: \(rrr["Message"] as! String)")
+                            // print("D3: \(rrr["Payload"] as! String)")
+                            
+                            if(rrr["Success"] as! Bool){
+                                // 更新 JWT Token
+                                plist["JWT_token"] = (rrr["Payload"] as! String)//.trimmingCharacters(in: .whitespaces)
+                                if plist.write(toFile: path, atomically: true) {
+                                    print("更新 JWT Token 成功")
+                                }
+                            }
+                            else{
+                                // 清空 JWT Token
+                                plist["JWT_token"] = ""
+                                if plist.write(toFile: path, atomically: true) {
+                                    print("清空 JWT Token 成功")
+                                }
+                            }
+                            
+                            // print("$\(plist["JWT_token"]as! String)$")
+                        } catch {
+                            print(error.localizedDescription)
+                        }
                     }
                 }
                 
                 // 開始讀取資料
                 dataTask.resume()
-            }
-        
+            }        
         }
     }
     /*
