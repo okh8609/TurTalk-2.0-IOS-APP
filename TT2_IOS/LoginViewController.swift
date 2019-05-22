@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func unwind(for segue: UIStoryboardSegue) {
+    @IBAction func unwindToLogin(for segue: UIStoryboardSegue) {
         
     }
 
