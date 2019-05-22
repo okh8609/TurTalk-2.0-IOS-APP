@@ -155,7 +155,7 @@
                                     <color key="titleColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <connections>
-                                    <segue destination="smR-kP-W3a" kind="unwind" unwindAction="unwindFor:" id="ufN-2G-LbQ"/>
+                                    <segue destination="smR-kP-W3a" kind="unwind" identifier="unwindToLogin1" unwindAction="unwindFor:" id="ufN-2G-LbQ"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z41-EX-uEX">
@@ -195,6 +195,7 @@
                         <outlet property="name" destination="Z41-EX-uEX" id="TCn-1g-uYF"/>
                         <outlet property="passwd1" destination="IEg-jw-nii" id="hsa-Ke-JQM"/>
                         <outlet property="passwd2" destination="csm-4i-N1f" id="fPx-SW-Vic"/>
+                        <segue destination="smR-kP-W3a" kind="unwind" identifier="unwindToLogin2" unwindAction="unwindFor:" id="2bf-Sn-VEW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tL-b0-EIh" userLabel="First Responder" sceneMemberID="firstResponder"/>

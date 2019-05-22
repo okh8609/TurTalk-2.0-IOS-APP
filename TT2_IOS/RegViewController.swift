@@ -58,19 +58,57 @@ class RegViewController: UIViewController {
                 let dataTask = session.dataTask(with: request) { (data, response, error) in
                     if let data = data {
                         let rrr = String(data: data, encoding: .utf8)
+                        // print(rrr!)
                         if(rrr == "true")
                         {
-                            print(rrr!)
                             // 秀出註冊成功
-                            // 返回上一動
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "Success", message: "Go to the email and click on the activated link.", preferredStyle: .alert)
+                                let OKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(_)in self.performSegue(withIdentifier: "unwindToLogin2", sender: self)})
+                                alert.addAction(OKAction)
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        }
+                        else if(rrr == "false")
+                        {
+                            // 清除所有欄位
+                            DispatchQueue.main.async {
+                                self.passwd1.text = ""
+                                self.passwd2.text = ""
+                            }
+                            
+                            // 秀出註冊失敗
+                            DispatchQueue.main.async {
+                                let alertBox = UIAlertController(title: "Error", message: "Email may have been registered.", preferredStyle: .alert)
+                                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                alertBox.addAction(okAction)
+                                self.show(alertBox, sender: self)
+                            }
                         }
                         else
                         {
-                            print(rrr!)
-                            // 秀出註冊失敗
                             // 清除所有欄位
-                            // self.showMsg(msg: "Something wrong!", foo: nil)
-                            // return;
+                            DispatchQueue.main.async {
+                                self.name.text = ""
+                                self.email.text = ""
+                                self.passwd1.text = ""
+                                self.passwd2.text = ""
+                            }
+                            
+                            // 秀出註冊失敗
+                            DispatchQueue.main.async {
+                                //create an alert window
+                                let alertBox = UIAlertController(title: "Error", message: "Email field may be incorrect.", preferredStyle: .alert)
+                                
+                                //create a button with its action
+                                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                
+                                //add action to alert window
+                                alertBox.addAction(okAction)
+                                
+                                //display alert window
+                                self.show(alertBox, sender: self)
+                            }
                         }
                     }
                 }
@@ -85,27 +123,31 @@ class RegViewController: UIViewController {
     
     func showMsg(msg: String, foo: (() -> ())?)
     {
-        //create an alert window
-        let alertBox = UIAlertController(title: nil,
-                                         message: msg,
-                                         preferredStyle: .alert)
-        
-        //create a button with its action
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        {
-            (UIAlertAction) in
+        DispatchQueue.main.async {
+
+            //create an alert window
+            let alertBox = UIAlertController(title: nil,
+                                             message: msg,
+                                             preferredStyle: .alert)
             
-            if foo != nil
+            //create a button with its action
+            let okAction = UIAlertAction(title: "OK", style: .default)
             {
-                foo!() //re-display login window
+                (UIAlertAction) in
+                
+                if foo != nil
+                {
+                    foo!() //re-display login window
+                }
             }
+            
+            //add action to alert window
+            alertBox.addAction(okAction)
+            
+            //display alert window
+            self.show(alertBox, sender: self)
+            
         }
-        
-        //add action to alert window
-        alertBox.addAction(okAction)
-        
-        //display alert window
-        show(alertBox, sender: self)
     }
     
     
