@@ -8,6 +8,24 @@
 
 import UIKit
 
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,14 +33,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // UITabBar
+        // UITabBar.appearance().tintColor = UIColor(rgb: 0x00C800) // 圖示 的顏色
+        UITabBar.appearance().tintColor = UIColor.white // 圖示 的顏色
+        UITabBar.appearance().barTintColor = UIColor.black // Bar 的顏色
+        
+        
+        // Helper.plist
         let fm = FileManager.default
-        
-        // 取得 Property List.plist 在專案中的路徑
+        // 取得 Helper.plist 在專案中的路徑
         let src = Bundle.main.path(forResource: "Helper", ofType: "plist")
-        
         // 取得要複製到的目的路徑
         let dst = NSHomeDirectory() + "/Documents/Helper.plist"
-        
         // 檢查目的路徑的 Property List.plist 檔案是否已經存在，如果不存在則複製檔案
         if !fm.fileExists(atPath: dst) {
             try! fm.copyItem(atPath: src!, toPath: dst)
