@@ -144,6 +144,9 @@
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.0" green="0.78431372549019607" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="SubmitClick:" destination="2Oy-kN-LT9" eventType="touchUpInside" id="njQ-qT-UVQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pH2-6k-LHM">
                                 <rect key="frame" x="85" y="486" width="90" height="30"/>
@@ -160,7 +163,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IEg-jw-nii">
                                 <rect key="frame" x="85" y="313" width="205" height="30"/>
@@ -187,6 +190,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Jhs-4g-4Sa"/>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="M03-3Y-ytI" id="6AJ-pD-de8"/>
+                        <outlet property="name" destination="Z41-EX-uEX" id="TCn-1g-uYF"/>
+                        <outlet property="passwd1" destination="IEg-jw-nii" id="hsa-Ke-JQM"/>
+                        <outlet property="passwd2" destination="csm-4i-N1f" id="fPx-SW-Vic"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tL-b0-EIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="smR-kP-W3a" userLabel="Exit" sceneMemberID="exit"/>

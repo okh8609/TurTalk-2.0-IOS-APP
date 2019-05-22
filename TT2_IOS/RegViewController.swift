@@ -10,24 +10,39 @@ import UIKit
 
 class RegViewController: UIViewController {
 
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var passwd1: UITextField!
+    @IBOutlet weak var passwd2: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func SignInBtnClick(_ sender: Any) {
+    @IBAction func SubmitClick(_ sender: Any) {
+        if(passwd1.text != passwd2.text)
+        {
+            showMsg(msg: "The password does not match!", foo: nil)
+            passwd1.text = ""
+            passwd2.text = ""
+            return;
+        }
+        
+        
         let path = NSHomeDirectory() + "/Documents/Helper.plist"
         if let plist = NSMutableDictionary(contentsOfFile: path) {
             if let API_URL = plist["API_URL"] {
                 
                 //要送出的資料
-                let json: [String: Any] = ["email" : "okh8609@gmail.com" , "password" : "123456788"]
+                let json: [String: Any] = ["name" : name.text ?? "",
+                                           "email" : email.text ?? "",
+                                           "password" : passwd1.text ?? ""]
                 let jsonData = try? JSONSerialization.data(withJSONObject: json)
                 
-                
                 //指定api的url
-                let url = URL(string: ((API_URL as! String) + "api/account/login"))
+                let url = URL(string: ((API_URL as! String) + "api/account/reg"))
                 
                 var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -42,8 +57,21 @@ class RegViewController: UIViewController {
                 // NSURLSessionDataTask 為讀取資料，讀取完成的資料會放在 data 中
                 let dataTask = session.dataTask(with: request) { (data, response, error) in
                     if let data = data {
-                        let html = String(data: data, encoding: .utf8)
-                        print(String(describing: html))
+                        let rrr = String(data: data, encoding: .utf8)
+                        if(rrr == "true")
+                        {
+                            print(rrr!)
+                            // 秀出註冊成功
+                            // 返回上一動
+                        }
+                        else
+                        {
+                            print(rrr!)
+                            // 秀出註冊失敗
+                            // 清除所有欄位
+                            // self.showMsg(msg: "Something wrong!", foo: nil)
+                            // return;
+                        }
                     }
                 }
                 
@@ -53,6 +81,34 @@ class RegViewController: UIViewController {
         }
     }
 
+    
+    
+    func showMsg(msg: String, foo: (() -> ())?)
+    {
+        //create an alert window
+        let alertBox = UIAlertController(title: nil,
+                                         message: msg,
+                                         preferredStyle: .alert)
+        
+        //create a button with its action
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        {
+            (UIAlertAction) in
+            
+            if foo != nil
+            {
+                foo!() //re-display login window
+            }
+        }
+        
+        //add action to alert window
+        alertBox.addAction(okAction)
+        
+        //display alert window
+        show(alertBox, sender: self)
+    }
+    
+    
     /*
     // MARK: - Navigation
 
