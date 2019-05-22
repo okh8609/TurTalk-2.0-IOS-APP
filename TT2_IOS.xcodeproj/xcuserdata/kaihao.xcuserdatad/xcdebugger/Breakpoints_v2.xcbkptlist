@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/LoginViewController.swift"
-            timestampString = "580206001.522752"
+            timestampString = "580206302.9512711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/LoginViewController.swift"
-            timestampString = "580206001.5228879"
+            timestampString = "580206302.951888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/LoginViewController.swift"
-            timestampString = "580206001.522952"
+            timestampString = "580206302.952329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -58,29 +58,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/RegViewController.swift"
-            timestampString = "580205731.930423"
+            timestampString = "580206302.95276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "SubmitClick(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/RegViewController.swift"
-            timestampString = "580205731.930923"
+            timestampString = "580206302.952844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
             endingLineNumber = "35"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "SubmitClick(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/RegViewController.swift"
-            timestampString = "580205731.931329"
+            timestampString = "580206302.9529231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "SubmitClick(_:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -138,13 +138,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/RegViewController.swift"
-            timestampString = "580205731.931695"
+            timestampString = "580206302.952997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "SubmitClick(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,13 +154,106 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/RegViewController.swift"
-            timestampString = "580205731.932037"
+            timestampString = "580206302.953073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
             endingLineNumber = "99"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "SubmitClick(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TT2_IOS/InviteViewController.swift"
+            timestampString = "580206459.842335"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "InviteViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TT2_IOS.InviteViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; TT2_IOS.InviteViewController"
+                  moduleName = "TT2_IOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaihao/Desktop/TT2_IOS/TT2_IOS/InviteViewController.swift"
+                  timestampString = "580206460.107458"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TT2_IOS.InviteViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; TT2_IOS.InviteViewController"
+                  moduleName = "TT2_IOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaihao/Desktop/TT2_IOS/TT2_IOS/InviteViewController.swift"
+                  timestampString = "580206460.1190749"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TT2_IOS.InviteViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;TT2_IOS.InviteViewController&gt;"
+                  moduleName = "TT2_IOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaihao/Desktop/TT2_IOS/TT2_IOS/InviteViewController.swift"
+                  timestampString = "580206460.136155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TT2_IOS.InviteViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;TT2_IOS.InviteViewController&gt;"
+                  moduleName = "TT2_IOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaihao/Desktop/TT2_IOS/TT2_IOS/InviteViewController.swift"
+                  timestampString = "580206460.152923"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TT2_IOS.InviteViewController.__deallocating_deinit"
+                  moduleName = "TT2_IOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaihao/Desktop/TT2_IOS/TT2_IOS/InviteViewController.swift"
+                  timestampString = "580206460.161921"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

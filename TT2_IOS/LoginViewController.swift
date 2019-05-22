@@ -17,6 +17,12 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // 檢查token，進行頁面轉跳
+        
+        
+        
+        
+        
     }
     
     @IBAction func unwindToLogin(for segue: UIStoryboardSegue) {
@@ -64,12 +70,32 @@ class LoginViewController: UIViewController {
                                 if plist.write(toFile: path, atomically: true) {
                                     print("更新 JWT Token 成功")
                                 }
+                                
+                                // 頁面轉跳
+                                
+                                
+                                
+                                
+                                
                             }
                             else{
                                 // 清空 JWT Token
                                 plist["JWT_token"] = ""
                                 if plist.write(toFile: path, atomically: true) {
                                     print("清空 JWT Token 成功")
+                                }
+                                
+                                // 清除所有欄位
+                                DispatchQueue.main.async {
+                                    self.passwd.text = ""
+                                }
+                                
+                                // 秀登入失敗
+                                DispatchQueue.main.async {
+                                    let alertBox = UIAlertController(title: "Error", message: "Login failed.", preferredStyle: .alert)
+                                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                    alertBox.addAction(okAction)
+                                    self.show(alertBox, sender: self)
                                 }
                             }
                             
