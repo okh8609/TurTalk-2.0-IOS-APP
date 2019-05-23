@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5028EFD22965EB900743C98 /* InvCodeGenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5028EFC22965EB900743C98 /* InvCodeGenViewController.swift */; };
 		B5329CD82292B2B6009222AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5329CD72292B2B6009222AF /* AppDelegate.swift */; };
 		B5329CDD2292B2B6009222AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5329CDB2292B2B6009222AF /* Main.storyboard */; };
 		B5329CDF2292B2B8009222AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5329CDE2292B2B8009222AF /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5028EFC22965EB900743C98 /* InvCodeGenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvCodeGenViewController.swift; sourceTree = "<group>"; };
 		B5329CD42292B2B6009222AF /* TT2_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TT2_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5329CD72292B2B6009222AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5329CDC2292B2B6009222AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				B5C66556229420D900041B6A /* LoginViewController.swift */,
 				B5C6655822942F4F00041B6A /* InviteViewController.swift */,
 				B5C6655A2294320100041B6A /* Helper.plist */,
+				B5028EFC22965EB900743C98 /* InvCodeGenViewController.swift */,
 			);
 			path = TT2_IOS;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				B5329CD82292B2B6009222AF /* AppDelegate.swift in Sources */,
 				B5C66555229415E400041B6A /* RegViewController.swift in Sources */,
 				B5C6655922942F4F00041B6A /* InviteViewController.swift in Sources */,
+				B5028EFD22965EB900743C98 /* InvCodeGenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
