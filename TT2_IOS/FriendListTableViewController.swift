@@ -11,6 +11,7 @@ import UIKit
 class FriendListTableViewController: UITableViewController {
 
     var ContactList: Array<Dictionary<String, AnyObject>> = []
+    var searchCtrl: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +64,17 @@ class FriendListTableViewController: UITableViewController {
                     
                     // 開始讀取資料
                     dataTask.resume()
+                    
+                    // 利用它載入資料的時間，產生搜尋列:
+                    if let vc = storyboard?.instantiateViewController(withIdentifier: "FriendSearchResult") as? FriendSearchTableViewController
+                    {
+                        searchCtrl = UISearchController(searchResultsController: vc)
+                        searchCtrl.searchResultsUpdater = vc
+                        searchCtrl.dimsBackgroundDuringPresentation = false
+                        tableView.tableHeaderView = searchCtrl.searchBar
+                    }
+                    // 搜尋列產生完畢.
+                    
                     semaphore.wait() //sync
                 }
             }
