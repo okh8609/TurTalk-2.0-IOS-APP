@@ -10,6 +10,9 @@
 		B5028EFD22965EB900743C98 /* InvCodeGenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5028EFC22965EB900743C98 /* InvCodeGenViewController.swift */; };
 		B5028EFF2296C0A100743C98 /* FriendListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5028EFE2296C0A100743C98 /* FriendListTableViewController.swift */; };
 		B5028F012296C0C000743C98 /* FriendSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5028F002296C0C000743C98 /* FriendSearchTableViewController.swift */; };
+		B5077CD82297F1E3004DF493 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5077CD72297F1E3004DF493 /* ProfileTableViewController.swift */; };
+		B5077CDA2297F6CD004DF493 /* ChangePasswdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5077CD92297F6CD004DF493 /* ChangePasswdViewController.swift */; };
+		B5077CDC2297F6E5004DF493 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5077CDB2297F6E5004DF493 /* ChangeNameViewController.swift */; };
 		B5329CD82292B2B6009222AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5329CD72292B2B6009222AF /* AppDelegate.swift */; };
 		B5329CDD2292B2B6009222AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5329CDB2292B2B6009222AF /* Main.storyboard */; };
 		B5329CDF2292B2B8009222AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5329CDE2292B2B8009222AF /* Assets.xcassets */; };
@@ -25,6 +28,9 @@
 		B5028EFC22965EB900743C98 /* InvCodeGenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvCodeGenViewController.swift; sourceTree = "<group>"; };
 		B5028EFE2296C0A100743C98 /* FriendListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewController.swift; sourceTree = "<group>"; };
 		B5028F002296C0C000743C98 /* FriendSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTableViewController.swift; sourceTree = "<group>"; };
+		B5077CD72297F1E3004DF493 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		B5077CD92297F6CD004DF493 /* ChangePasswdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswdViewController.swift; sourceTree = "<group>"; };
+		B5077CDB2297F6E5004DF493 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		B5329CD42292B2B6009222AF /* TT2_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TT2_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5329CD72292B2B6009222AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5329CDC2292B2B6009222AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,6 +87,9 @@
 				B5028EFC22965EB900743C98 /* InvCodeGenViewController.swift */,
 				B5028EFE2296C0A100743C98 /* FriendListTableViewController.swift */,
 				B5028F002296C0C000743C98 /* FriendSearchTableViewController.swift */,
+				B5077CD72297F1E3004DF493 /* ProfileTableViewController.swift */,
+				B5077CD92297F6CD004DF493 /* ChangePasswdViewController.swift */,
+				B5077CDB2297F6E5004DF493 /* ChangeNameViewController.swift */,
 			);
 			path = TT2_IOS;
 			sourceTree = "<group>";
@@ -158,12 +167,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5077CDA2297F6CD004DF493 /* ChangePasswdViewController.swift in Sources */,
 				B5C66557229420D900041B6A /* LoginViewController.swift in Sources */,
 				B5329CD82292B2B6009222AF /* AppDelegate.swift in Sources */,
 				B5028F012296C0C000743C98 /* FriendSearchTableViewController.swift in Sources */,
 				B5C66555229415E400041B6A /* RegViewController.swift in Sources */,
 				B5028EFF2296C0A100743C98 /* FriendListTableViewController.swift in Sources */,
 				B5C6655922942F4F00041B6A /* InviteViewController.swift in Sources */,
+				B5077CDC2297F6E5004DF493 /* ChangeNameViewController.swift in Sources */,
+				B5077CD82297F1E3004DF493 /* ProfileTableViewController.swift in Sources */,
 				B5028EFD22965EB900743C98 /* InvCodeGenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
