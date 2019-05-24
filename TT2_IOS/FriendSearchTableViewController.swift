@@ -119,6 +119,73 @@ class FriendSearchTableViewController: UITableViewController, UISearchResultsUpd
         return cell
     }
     
+    // 按下item之後會觸發的事件
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let UID = (ResultList[indexPath.row]["uid"] as! Int)
+        
+        let path = NSHomeDirectory() + "/Documents/Helper.plist"
+        if let plist = NSMutableDictionary(contentsOfFile: path) {
+            if let API_URL = plist["API_URL"] {
+                if let JWT_token = plist["JWT_token"] { // 取得jwt token
+                    
+                    //指定api的url
+                    let url = URL(string: ((API_URL as! String) + "api/contacts/add"))
+                    
+                    var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+                    request.setValue(("Bearer " + (JWT_token as! String)), forHTTPHeaderField: "Authorization")
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.httpMethod = "POST"
+                    request.httpBody = String(UID).data(using: .utf8)
+                    
+                    // 使用預設的設定建立 session
+                    let config = URLSessionConfiguration.default
+                    let session = URLSession(configuration: config)
+                    
+                    // NSURLSessionDataTask 為讀取資料，讀取完成的資料會放在 data 中
+                    let dataTask = session.dataTask(with: request) { (data, response, error) in
+                        if let data = data {
+                            let rrr = String(data: data, encoding: .utf8)
+                            print(rrr!)
+                            
+                            if(rrr == "true")
+                            {
+                                // 秀出成功加入的訊息
+                                DispatchQueue.main.async {
+                                    let msg = "\(self.ResultList[indexPath.row]["name"] as! String)(\(self.ResultList[indexPath.row]["email"] as! String)) been added. Please drop down to refresh the list."
+                                    let ctr = UIAlertController(title: "Success", message: msg, preferredStyle: .alert)
+                                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                    ctr.addAction(action)
+                                    self.show(ctr, sender: self)
+                                }
+                            }
+                            else
+                            {
+                                // 秀出加入失敗的訊息
+                                DispatchQueue.main.async {
+                                    let msg = "Add failed. He may already be your friend."
+                                    let ctr = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
+                                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                    ctr.addAction(action)
+                                    self.show(ctr, sender: self)
+                                }
+                            }
+                        }
+                    }
+                    
+                    // 開始讀取資料
+                    dataTask.resume()
+                }
+            }
+        }
+        
+        /*
+        let msg = "uid: \(ResultList[indexPath.row]["uid"] as! Int). name: \(ResultList[indexPath.row]["name"] as! String). email: \(ResultList[indexPath.row]["email"] as! String)."
+        let ctr = UIAlertController(title: "Selected", message: msg, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ctr.addAction(action)
+        present(ctr, animated: true, completion: nil)
+        */
+    }
 
     /*
     // Override to support conditional editing of the table view.

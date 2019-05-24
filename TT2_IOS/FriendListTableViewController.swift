@@ -75,10 +75,69 @@ class FriendListTableViewController: UITableViewController {
                     }
                     // 搜尋列產生完畢.
                     
+                    // 利用它載入資料的時間，設定下拉更新:
+                    tableView.refreshControl = UIRefreshControl()
+                    tableView.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+                    // 設定完畢.
+                    
                     semaphore.wait() //sync
                 }
             }
         }
+    }
+    
+    @objc func handleRefresh() {
+        let path = NSHomeDirectory() + "/Documents/Helper.plist"
+        if let plist = NSMutableDictionary(contentsOfFile: path) {
+            if let API_URL = plist["API_URL"] {
+                if let JWT_token = plist["JWT_token"] { // 取得jwt token
+                    
+                    //指定api的url
+                    let url = URL(string: ((API_URL as! String) + "api/contacts/list"))
+                    
+                    var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+                    request.setValue(("Bearer " + (JWT_token as! String)), forHTTPHeaderField: "Authorization")
+                    request.httpMethod = "GET"
+                    
+                    // 使用預設的設定建立 session
+                    let config = URLSessionConfiguration.default
+                    let session = URLSession(configuration: config)
+                    
+                    let semaphore = DispatchSemaphore(value: 0) //sync
+                    // NSURLSessionDataTask 為讀取資料，讀取完成的資料會放在 data 中
+                    let dataTask = session.dataTask(with: request) { (data, response, error) in
+                        if let data = data {
+                            do {
+                                // 解析 JSON
+                                // let rrr = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary // 字典
+                                let rrr = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! Array<Dictionary<String, AnyObject>> // 字典陣列
+                                // print(rrr)
+                                
+                                // 取出結果
+                                self.ContactList = rrr
+                                for r in self.ContactList {
+                                    print("Name: \(r["name"] as! String)")
+                                    print("Email: \(r["email"] as! String)")
+                                }
+                                
+                                semaphore.signal() //sync
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                    
+                    // 開始讀取資料
+                    dataTask.resume()
+                    semaphore.wait() //sync
+                }
+            }
+        }
+        
+        // 停止下拉後的動畫特效並復原表格位置
+        tableView.refreshControl?.endRefreshing()
+        // 要表格重新載入資料
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
