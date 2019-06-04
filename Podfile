@@ -9,5 +9,5 @@ target 'TT2_IOS' do
 	pod 'Alamofire'
 	pod 'SnapKit'
 	pod 'Parse'
-	pod 'ParseUI'
+	pod 'Parse/UI'
 end

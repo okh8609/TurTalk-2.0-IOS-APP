@@ -5,6 +5,6 @@
 	<key>JWT_token</key>
 	<string></string>
 	<key>API_URL</key>
-	<string>https://kaihao.tw:60089/</string>
+	<string>https://kaihao.tw/</string>
 </dict>
 </plist>
