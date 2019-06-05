@@ -150,6 +150,19 @@ class ChatListTableViewController: UITableViewController {
         return cell
     }
 
+    // 按下item之後會觸發的事件
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "ShowTimer", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dst = segue.destination as? ChatTimerViewController{
+            //dst.UID = (ChatList[indexPath.row]["uid"] as! Int)
+            dst.UID = (ChatList[(tableView.indexPathForSelectedRow?.row)!]["uid"] as! Int)
+            tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: true)
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

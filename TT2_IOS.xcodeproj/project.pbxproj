@@ -24,6 +24,7 @@
 		B5C66557229420D900041B6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C66556229420D900041B6A /* LoginViewController.swift */; };
 		B5C6655922942F4F00041B6A /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6655822942F4F00041B6A /* InviteViewController.swift */; };
 		B5C6655B2294320100041B6A /* Helper.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C6655A2294320100041B6A /* Helper.plist */; };
+		B5C8CA3E22A7719400C8834F /* ChatTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C8CA3D22A7719400C8834F /* ChatTimerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B5C66556229420D900041B6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B5C6655822942F4F00041B6A /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		B5C6655A2294320100041B6A /* Helper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Helper.plist; sourceTree = "<group>"; };
+		B5C8CA3D22A7719400C8834F /* ChatTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				B5077CD92297F6CD004DF493 /* ChangePasswdViewController.swift */,
 				B5077CDB2297F6E5004DF493 /* ChangeNameViewController.swift */,
 				B502C53C22A6A6F300A7A38D /* ChatListTableViewController.swift */,
+				B5C8CA3D22A7719400C8834F /* ChatTimerViewController.swift */,
 			);
 			path = TT2_IOS;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C8CA3E22A7719400C8834F /* ChatTimerViewController.swift in Sources */,
 				B5077CDA2297F6CD004DF493 /* ChangePasswdViewController.swift in Sources */,
 				B5C66557229420D900041B6A /* LoginViewController.swift in Sources */,
 				B5329CD82292B2B6009222AF /* AppDelegate.swift in Sources */,
