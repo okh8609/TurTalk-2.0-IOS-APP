@@ -243,6 +243,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="WKs-ut-DRF"/>
+                    <connections>
+                        <segue destination="fGN-53-0SO" kind="show" identifier="ShowTimer2" id="n28-dQ-C7M"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0aP-I7-8hW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -303,13 +306,40 @@
                     <view key="view" contentMode="scaleToFill" id="m19-k2-8cf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sw4-F8-GzN">
+                                <rect key="frame" x="64" y="218" width="247" height="241"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fGN-53-0SO" id="dwO-40-Hws"/>
+                                    <outlet property="delegate" destination="fGN-53-0SO" id="Lez-W0-KoP"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Msg Effective Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W71-yb-Rpa">
+                                <rect key="frame" x="25" y="169" width="324" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="34"/>
+                                <color key="textColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5k-BA-ofa">
+                                <rect key="frame" x="142" y="467" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" red="0.0" green="0.7843137255" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="SubmitClick:" destination="2Oy-kN-LT9" eventType="touchUpInside" id="avN-pk-Xpr"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="i3J-IS-3jx"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Far-09-uvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1465" y="1701"/>
+            <point key="canvasLocation" x="1694" y="1282"/>
         </scene>
         <!--Profile Table View Controller-->
         <scene sceneID="czi-AO-zA9">
@@ -657,7 +687,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zc3-5h-pP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1615.2" y="974.6626686656673"/>
+            <point key="canvasLocation" x="943" y="632"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dUg-dK-52Z">
@@ -764,4 +794,7 @@
         <image name="Tab4_Chat" width="30" height="30"/>
         <image name="Tab5_Profile" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="n28-dQ-C7M"/>
+    </inferredMetricsTieBreakers>
 </document>

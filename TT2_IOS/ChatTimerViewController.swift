@@ -8,17 +8,74 @@
 
 import UIKit
 
-class ChatTimerViewController: UIViewController {
+class ChatTimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
     var UID: Int?
+    
+    let HH = Array(0...23)
+    let MM = Array(0...59)
+    let SS = Array(0...59)
+    var effTime = [Int](repeating:0, count: 3) // HH:MM:SS
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print(UID!)
+        
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 3
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        // 0 代表最左邊的滾輪
+        
+        if component == 0 {
+            return HH.count
+        }
+        else if component == 1 {
+            return MM.count
+        }
+        else if component == 2 {
+            return SS.count
+        }
+        
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if component == 0 {
+            return String(HH[row])
+        }
+        else if component == 1 {
+            return String(MM[row])
+        }
+        else if component == 2 {
+            return String(SS[row])
+        }
+        
+        return nil
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if component == 0 {
+            // print("HH：\(HH[row])")
+            effTime[0] = HH[row]
+        }
+        else if component == 1 {
+            // print("MM：\(MM[row])")
+            effTime[1] = MM[row]
+        }
+        else if component == 2 {
+            // print("SS：\(SS[row])")
+            effTime[2] = SS[row]
+        }
+        print("\(effTime[0]):\(effTime[1]):\(effTime[2]).000")
+    }
 
     /*
     // MARK: - Navigation

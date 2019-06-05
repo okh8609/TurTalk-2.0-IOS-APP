@@ -222,6 +222,17 @@ class FriendListTableViewController: UITableViewController {
         }
     }
 
+    // 按下item之後會觸發的事件
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowTimer2", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dst = segue.destination as? ChatTimerViewController{
+            dst.UID = (ContactList[(tableView.indexPathForSelectedRow?.row)!]["uid"] as! Int)
+            tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: true)
+        }
+    }
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
