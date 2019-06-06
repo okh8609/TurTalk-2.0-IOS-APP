@@ -76,7 +76,16 @@ class ChatTimerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         print("\(effTime[0]):\(effTime[1]):\(effTime[2]).000")
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        /*
+        if let dst = segue.destination as? ChatTimerViewController{
+            //dst.UID = (ChatList[indexPath.row]["uid"] as! Int)
+            dst.UID = (ChatList[(tableView.indexPathForSelectedRow?.row)!]["uid"] as! Int)
+            tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: true)
+        }
+ */
+    }
     /*
     // MARK: - Navigation
 

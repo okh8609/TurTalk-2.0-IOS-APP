@@ -8,6 +8,7 @@ target 'TT2_IOS' do
   # Pods for TT2_IOS
 	pod 'Alamofire'
 	pod 'SnapKit'
-	pod 'Parse'
-	pod 'Parse/UI'
+	#pod 'Parse'
+	#pod 'Parse/UI'
+	pod 'ChatViewController'
 end

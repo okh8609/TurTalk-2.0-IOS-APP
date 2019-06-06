@@ -1,33 +1,28 @@
 PODS:
   - Alamofire (4.8.2)
-  - Bolts/Tasks (1.9.0)
-  - Parse (1.17.2):
-    - Parse/Core (= 1.17.2)
-  - Parse/Core (1.17.2):
-    - Bolts/Tasks (~> 1.9)
-  - Parse/UI (1.17.2):
-    - Parse/Core
+  - ChatViewController (1.2.0):
+    - PlaceholderUITextView
+  - PlaceholderUITextView (1.2.0)
   - SnapKit (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
-  - Parse
-  - Parse/UI
+  - ChatViewController
   - SnapKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - Bolts
-    - Parse
+    - ChatViewController
+    - PlaceholderUITextView
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
+  ChatViewController: fcc9152b22a0099ced7052d842829d6a7ee9e53f
+  PlaceholderUITextView: a2158e51dc0a3217ecca2d879bbe59372292d391
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-PODFILE CHECKSUM: 07e06f97296adc4d44e076399609c329038f9fd2
+PODFILE CHECKSUM: 012162864403d90fbde572126be832e74665d34f
 
 COCOAPODS: 1.7.0

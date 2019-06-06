@@ -20,6 +20,8 @@
 		B5329CDF2292B2B8009222AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5329CDE2292B2B8009222AF /* Assets.xcassets */; };
 		B5329CE22292B2B8009222AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5329CE02292B2B8009222AF /* LaunchScreen.storyboard */; };
 		B5329CEA22930B25009222AF /* TT_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5329CE922930B24009222AF /* TT_Logo.png */; };
+		B53D30DB22A8EE3200F9C08B /* ChatMsgTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53D30DA22A8EE3200F9C08B /* ChatMsgTableViewController.swift */; };
+		B53D30DD22A8F28F00F9C08B /* ChatMsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53D30DC22A8F28F00F9C08B /* ChatMsgTableViewCell.swift */; };
 		B5C66555229415E400041B6A /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C66554229415E400041B6A /* RegViewController.swift */; };
 		B5C66557229420D900041B6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C66556229420D900041B6A /* LoginViewController.swift */; };
 		B5C6655922942F4F00041B6A /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6655822942F4F00041B6A /* InviteViewController.swift */; };
@@ -45,6 +47,8 @@
 		B5329CE12292B2B8009222AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5329CE32292B2B8009222AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5329CE922930B24009222AF /* TT_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TT_Logo.png; sourceTree = "<group>"; };
+		B53D30DA22A8EE3200F9C08B /* ChatMsgTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMsgTableViewController.swift; sourceTree = "<group>"; };
+		B53D30DC22A8F28F00F9C08B /* ChatMsgTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMsgTableViewCell.swift; sourceTree = "<group>"; };
 		B5C66554229415E400041B6A /* RegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 		B5C66556229420D900041B6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B5C6655822942F4F00041B6A /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				B5077CDB2297F6E5004DF493 /* ChangeNameViewController.swift */,
 				B502C53C22A6A6F300A7A38D /* ChatListTableViewController.swift */,
 				B5C8CA3D22A7719400C8834F /* ChatTimerViewController.swift */,
+				B53D30DA22A8EE3200F9C08B /* ChatMsgTableViewController.swift */,
+				B53D30DC22A8F28F00F9C08B /* ChatMsgTableViewCell.swift */,
 			);
 			path = TT2_IOS;
 			sourceTree = "<group>";
@@ -244,6 +250,7 @@
 				B5C8CA3E22A7719400C8834F /* ChatTimerViewController.swift in Sources */,
 				B5077CDA2297F6CD004DF493 /* ChangePasswdViewController.swift in Sources */,
 				B5C66557229420D900041B6A /* LoginViewController.swift in Sources */,
+				B53D30DD22A8F28F00F9C08B /* ChatMsgTableViewCell.swift in Sources */,
 				B5329CD82292B2B6009222AF /* AppDelegate.swift in Sources */,
 				B5028F012296C0C000743C98 /* FriendSearchTableViewController.swift in Sources */,
 				B502C53D22A6A6F300A7A38D /* ChatListTableViewController.swift in Sources */,
@@ -252,6 +259,7 @@
 				B5C6655922942F4F00041B6A /* InviteViewController.swift in Sources */,
 				B5077CDC2297F6E5004DF493 /* ChangeNameViewController.swift in Sources */,
 				B5077CD82297F1E3004DF493 /* ProfileTableViewController.swift in Sources */,
+				B53D30DB22A8EE3200F9C08B /* ChatMsgTableViewController.swift in Sources */,
 				B5028EFD22965EB900743C98 /* InvCodeGenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
