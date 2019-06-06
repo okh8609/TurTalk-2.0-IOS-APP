@@ -13,12 +13,30 @@ class ChatMsgTableViewCell: UITableViewCell {
     let msgLabel = UILabel()
     let bgView = UIView()
     
+    var isMyMsg: Bool!
+    {
+        didSet {
+            bgView.backgroundColor = isMyMsg ? .darkGray : .white
+            msgLabel.textColor = isMyMsg ? .white : .black
+            if isMyMsg
+            {
+                msgLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
+            }
+            else
+            {
+                msgLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32).isActive = true
+            }
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = .clear
+        
         addSubview(bgView)
         bgView.backgroundColor = .yellow
-        bgView.layer.cornerRadius = 8
+        bgView.layer.cornerRadius = 16
         bgView.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(msgLabel)
@@ -30,10 +48,10 @@ class ChatMsgTableViewCell: UITableViewCell {
         // set constraints
         //msgLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         let constraints = [msgLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32),
-                           msgLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
                            msgLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32),
                            //msgLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-                           msgLabel.widthAnchor.constraint(equalToConstant: 220),
+                           //msgLabel.widthAnchor.constraint(equalToConstant: 250),
+                           msgLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250),
                            
                            bgView.topAnchor.constraint(equalTo: msgLabel.topAnchor, constant: -16),
                            bgView.leadingAnchor.constraint(equalTo: msgLabel.leadingAnchor, constant: -16),

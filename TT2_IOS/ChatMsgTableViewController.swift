@@ -10,7 +10,7 @@ import UIKit
 
 class ChatMsgTableViewController: UITableViewController {
 
-    let textMsgs = ["111111 11111111111  111111  11111111  111111111","2222222222222222 222222222222 22222222 22222222","33333333333333333  33333333 33333333333"]
+    let textMsgs = ["111111 11111111111  111111  11111111  111111111","2222222222222222 222222222222 22222222 22222222","33333333333333333  33333333 33333333333","111111 11111111111  111111  11111111  111111111","2222222222222222 222222222222 22222222 22222222","33333333333333333  33333333 33333333333"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +19,7 @@ class ChatMsgTableViewController: UITableViewController {
         
         tableView.register(ChatMsgTableViewCell.self, forCellReuseIdentifier: "id2")
         tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -47,6 +48,7 @@ class ChatMsgTableViewController: UITableViewController {
         //cell.textLabel?.text = "TTTT TTTT TTTT"
         //cell.textLabel?.numberOfLines = 0
         cell.msgLabel.text = textMsgs[indexPath.row]
+        cell.isMyMsg = indexPath.row % 2 == 0
         
         return cell
     }
