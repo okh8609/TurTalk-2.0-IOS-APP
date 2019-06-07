@@ -12,6 +12,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet weak var tableView080: UITableView!
     var magBarBtmConstraint: NSLayoutConstraint?
+    let msgBar = MsgInputBarUIView()
     
     let textMsgs = ["1111 111 11111 1111 11 111111 11111 11111 111111",
                     "22222 222 2222 2222 2222 22 22222 222222222 222 22222",
@@ -25,22 +26,6 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                     "1111 11 1111111 1111 1111 11 1111 1111 1111 11111",
                     "222 22222 22222 222 222222 222222 2 2222222 22 222222",
                     "3333 333 33333 33333 33333 333 33333333 333"]
-    
-    let msgBar: UIView = {
-        let theView = UIView()
-        theView.backgroundColor = UIColor.lightGray
-        
-        let textBox = UITextField()
-        textBox.placeholder = "Enter message..."
-        textBox.translatesAutoresizingMaskIntoConstraints = false
-        theView.addSubview(textBox)
-        textBox.leadingAnchor.constraint(equalTo: theView.leadingAnchor, constant: 16).isActive = true
-        textBox.trailingAnchor.constraint(equalTo: theView.trailingAnchor, constant: 0).isActive = true
-        textBox.bottomAnchor.constraint(equalTo: theView.bottomAnchor, constant: 0).isActive = true
-        textBox.topAnchor.constraint(equalTo: theView.topAnchor, constant: 0).isActive = true
-        
-        return theView
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +67,10 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
             
             magBarBtmConstraint?.constant = -keyboardFrame!.height
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print ("1232")
     }
     
     // MARK: - Table view data source
