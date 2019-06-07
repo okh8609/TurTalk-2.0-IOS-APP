@@ -38,6 +38,9 @@
                                 <state key="normal" title="Go">
                                     <color key="titleColor" red="0.0" green="0.78512852610369299" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="GoBtnClick:" destination="O0c-Zw-RSx" eventType="touchUpInside" id="NHe-MX-fof"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invitation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJY-N3-0gZ">
                                 <rect key="frame" x="45" y="147" width="164" height="41"/>
@@ -51,10 +54,15 @@
                         <viewLayoutGuide key="safeArea" id="aT6-87-3IX"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Invited" image="Tab2_Invited" largeContentSizeImage="TT_Logo" id="EPV-S3-RYi"/>
+                    <connections>
+                        <outlet property="trialID" destination="fAF-8Y-jXC" id="TE5-x7-ROg"/>
+                        <outlet property="trialPwd" destination="X1r-gO-atG" id="L9o-Ge-pwf"/>
+                        <segue destination="fGN-53-0SO" kind="show" identifier="InvitedIn" id="7jb-Mn-23A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baA-hO-rR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1538" y="-699"/>
+            <point key="canvasLocation" x="1694" y="-297"/>
         </scene>
         <!--Login-->
         <scene sceneID="Ok2-r6-qwD">
@@ -535,7 +543,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invitation Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCn-6g-Apo">
-                                <rect key="frame" x="49" y="217" width="260" height="41"/>
+                                <rect key="frame" x="49" y="207" width="260" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="34"/>
                                 <color key="textColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -555,6 +563,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StY-fd-dlf">
+                                <rect key="frame" x="142" y="438" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.0" green="0.7843137255" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="StartBtnClick:" destination="cyz-h6-k8Z" eventType="touchUpInside" id="Wei-3P-gtA"/>
+                                    <action selector="SubmitClick:" destination="2Oy-kN-LT9" eventType="touchUpInside" id="5XX-vj-CQ2"/>
+                                    <action selector="SubmitClick:" destination="l1s-9v-Wfl" eventType="touchUpInside" id="qay-IL-PkY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aPH-3f-8Rn"/>
@@ -562,6 +582,7 @@
                     <connections>
                         <outlet property="id" destination="6MD-9z-J2J" id="nue-aj-3jR"/>
                         <outlet property="passwd" destination="G5d-PF-EKW" id="tcB-l1-UqV"/>
+                        <segue destination="fGN-53-0SO" kind="show" identifier="InvitedSrart" id="Wuv-vd-MBw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vE8-j9-dw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -829,6 +850,6 @@
         <image name="Tab5_Profile" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="n28-dQ-C7M"/>
+        <segue reference="Wuv-vd-MBw"/>
     </inferredMetricsTieBreakers>
 </document>

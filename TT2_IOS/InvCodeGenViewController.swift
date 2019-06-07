@@ -73,6 +73,17 @@ class InvCodeGenViewController: UIViewController {
         }
     }
     
+    @IBAction func StartBtnClick(_ sender: UIButton) {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "InvitedSrart", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dst = segue.destination as? ChatTimerViewController{
+            dst.UID = Int(id.text!) ?? -1
+        }
+    }
     /*
     // MARK: - Navigation
 
