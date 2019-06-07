@@ -12,6 +12,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
 
     var UID: Int?
     var eff_t: String?
+    
     var LastFetchT: String?
     var ChatMsgList: Array<Dictionary<String, AnyObject>> = []
     
@@ -59,8 +60,6 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                     let dataTask = session.dataTask(with: request) { (data, response, error) in
                         if let data = data {
                             do {
-                                // 解析 JSON
-                                
                                 print(String(data: data, encoding: .utf8)!)
                                 
                                 let jsonObj = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary // 字典
@@ -84,10 +83,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                         }
                     }
                     
-                    // 開始讀取資料
                     dataTask.resume()
-                    
-                    //semaphore.wait() //sync
                 }
             }
         }
@@ -301,8 +297,29 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "id2", for: indexPath) as!ChatMsgTableViewCell
         
+        let t1 = ChatMsgList[indexPath.row]["exp"] as! String
+        let t2 = LastFetchT!
+        let it1 = t1.index(t1.startIndex, offsetBy: 19)
+        let it2 = t2.index(t1.startIndex, offsetBy: 19)
+        let tt1 = String(t1[..<it1])
+        let tt2 = String(t2[..<it2])
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        let dt1 = dateFormatter.date(from: tt1)
+        let dt2 = dateFormatter.date(from: tt2)
+        
         // Configure the cell...
-        cell.msgLabel.text = (ChatMsgList[indexPath.row]["msg"] as! String)
+        if(dt1! < dt2!)
+        {
+            cell.msgLabel.text = "### Expired Message ###"
+        }
+        else
+        {
+            cell.msgLabel.text = (ChatMsgList[indexPath.row]["msg"] as! String)
+        }
+        
         cell.isMyMsg = (ChatMsgList[indexPath.row]["isMyMsg"] as! Bool)
         
         return cell
