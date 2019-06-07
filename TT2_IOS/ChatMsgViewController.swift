@@ -49,7 +49,8 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         //msgBar.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         //msgBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShowHandler), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHandler), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHandler), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -58,19 +59,29 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    @objc func keyboardShowHandler(notification: NSNotification)
+    @objc func keyboardHandler(notification: NSNotification)
     {
         if let userInfo = notification.userInfo{
             
             let keyboardFrame = ((userInfo[UIResponder.keyboardFrameEndUserInfoKey]) as AnyObject).cgRectValue
-            print(keyboardFrame!)
+            //print(keyboardFrame!)
             
-            magBarBtmConstraint?.constant = -keyboardFrame!.height
+            let isShowing = notification.name == UIResponder.keyboardWillShowNotification
+            
+            magBarBtmConstraint?.constant = isShowing ? -keyboardFrame!.height : 0
+            
+            UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { (completed) in
+                //
+            })
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print ("1232")
+        //magBarBtmConstraint?.constant = 0
+        msgBar.textBox.endEditing(true)
+        tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: true)
     }
     
     // MARK: - Table view data source
@@ -90,9 +101,6 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "id2", for: indexPath) as!ChatMsgTableViewCell
         
         // Configure the cell...
-        
-        //cell.textLabel?.text = "TTTT TTTT TTTT"
-        //cell.textLabel?.numberOfLines = 0
         cell.msgLabel.text = textMsgs[indexPath.row]
         cell.isMyMsg = indexPath.row % 2 == 0
         
