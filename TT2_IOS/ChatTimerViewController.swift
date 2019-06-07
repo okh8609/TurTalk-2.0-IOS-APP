@@ -79,17 +79,27 @@ class ChatTimerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             // print("SS：\(SS[row])")
             effTime[2] = SS[row]
         }
-        print("\(effTime[0]):\(effTime[1]):\(effTime[2]).000")
+        //print("\(effTime[0]):\(effTime[1]):\(effTime[2]).000")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*
-        if let dst = segue.destination as? ChatTimerViewController{
-            //dst.UID = (ChatList[indexPath.row]["uid"] as! Int)
-            dst.UID = (ChatList[(tableView.indexPathForSelectedRow?.row)!]["uid"] as! Int)
-            tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: true)
+        if let dst = segue.destination as? ChatMsgViewController{
+            dst.UID = self.UID
+            dst.eff_t = "\(effTime[0]):\(effTime[1]):\(effTime[2]).000"
         }
- */
+    }
+    @IBAction func okBtnClick(_ sender: UIButton) {
+        if (((effTime[0] * 60 + effTime[1]) * 60 + effTime[2]) < 15)
+        {
+            let alertBox = UIAlertController(title: "Error", message: "Message effective time must at least 15 seconds.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertBox.addAction(okAction)
+            self.present(alertBox, animated: true, completion: nil)
+        }
+        else
+        {
+            performSegue(withIdentifier: "ShowChatMsg", sender: self)
+        }
     }
     /*
     // MARK: - Navigation

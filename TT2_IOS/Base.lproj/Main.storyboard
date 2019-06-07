@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIl-QH-LbX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pu2-bf-nVF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baA-hO-rR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-585" y="90"/>
+            <point key="canvasLocation" x="-1538" y="-699"/>
         </scene>
         <!--Login-->
         <scene sceneID="Ok2-r6-qwD">
@@ -117,11 +117,12 @@
                     <connections>
                         <outlet property="email" destination="sWQ-oJ-eMC" id="oWG-4U-JfH"/>
                         <outlet property="passwd" destination="NQo-hg-ezF" id="uhl-bI-zQM"/>
+                        <segue destination="jIl-QH-LbX" kind="show" identifier="LoggedIn" id="PKt-ou-0GU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAZ-9w-pgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-586.39999999999998" y="-575.26236881559225"/>
+            <point key="canvasLocation" x="-1538" y="132"/>
         </scene>
         <!--Reg View Controller-->
         <scene sceneID="5oa-ST-xMw">
@@ -201,7 +202,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tL-b0-EIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="smR-kP-W3a" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="273" y="-575"/>
+            <point key="canvasLocation" x="-492" y="132"/>
         </scene>
         <!--Friend List Table View Controller-->
         <scene sceneID="rJe-YR-h4E">
@@ -330,13 +331,16 @@
                                 </state>
                                 <connections>
                                     <action selector="SubmitClick:" destination="2Oy-kN-LT9" eventType="touchUpInside" id="avN-pk-Xpr"/>
-                                    <segue destination="ILB-i5-BrA" kind="show" id="lsQ-V8-4HB"/>
+                                    <action selector="okBtnClick:" destination="fGN-53-0SO" eventType="touchUpInside" id="vXa-J5-mDA"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="i3J-IS-3jx"/>
                     </view>
+                    <connections>
+                        <segue destination="ILB-i5-BrA" kind="show" identifier="ShowChatMsg" id="u7E-9W-VBB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Far-09-uvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -735,7 +739,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ty3-oa-PK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1537" y="-243"/>
+            <point key="canvasLocation" x="-2694" y="-297"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QNP-NN-8EL">

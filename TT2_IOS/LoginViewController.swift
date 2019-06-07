@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
         
         
         
-        
     }
     
     @IBAction func unwindToLogin(for segue: UIStoryboardSegue) {
@@ -72,11 +71,9 @@ class LoginViewController: UIViewController {
                                 }
                                 
                                 // 頁面轉跳
-                                
-                                
-                                
-                                
-                                
+                                DispatchQueue.main.async {
+                                    self.performSegue(withIdentifier: "LoggedIn", sender: self)
+                                }
                             }
                             else{
                                 // 清空 JWT Token

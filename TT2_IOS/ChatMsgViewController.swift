@@ -10,6 +10,9 @@ import UIKit
 
 class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var UID: Int?
+    var eff_t: String?
+    
     @IBOutlet weak var tableView080: UITableView!
     var tableView080BtmConstraint: NSLayoutConstraint?
     
@@ -33,6 +36,9 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // print(UID)
+        // print(eff_t)
         
         navigationItem.title = "Message"
         //navigationController?.navigationBar.prefersLargeTitles = true
