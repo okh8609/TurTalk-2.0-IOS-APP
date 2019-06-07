@@ -12,6 +12,8 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
 
     var UID: Int?
     var eff_t: String?
+    var LastUpdateT: String?
+    var ChatMsgList: Array<Dictionary<String, AnyObject>> = []
     
     @IBOutlet weak var tableView080: UITableView!
     var tableView080BtmConstraint: NSLayoutConstraint?
@@ -20,25 +22,78 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
     let msgBarHeight = CGFloat(48)
     var magBarBtmConstraint: NSLayoutConstraint?
 
-    
-    let textMsgs = ["@1111 111 11111 1111 11 111111 11111 11111 111111",
-                    "22222 222 2222 2222 2222 22 22222 222222222 222 22222",
-                    "333 3333 333 333 3333 33333 333333 333 33333",
-                    "11 111 11 11 111 1111 1111 111 11111 111 111 111111",
-                    "22 222 2222 22 22 222 222 2222 22 22 2222 2222 22 222222",
-                    "333333 33333 333333 33333333 33333 333333",
-                    "111111 1111 1111111 111111 1111 1111 1111 11111",
-                    "22222 222 2222 2222 2222 22222 222 22222 222 222 22222",
-                    "333 3333 333 333 3333 333 33333 333333 33333",
-                    "1111 11 1111111 1111 1111 11 1111 1111 1111 11111",
-                    "222 22222 22222 222 222222 222222 2 2222222 22 222222",
-                    "3333 333 33333 33333 33333 333 33333333 333@"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // print(UID)
-        // print(eff_t)
+        let semaphore = DispatchSemaphore(value: 0) //sync
+        
+        // 取得聊天訊息列表
+        let path = NSHomeDirectory() + "/Documents/Helper.plist"
+        if let plist = NSMutableDictionary(contentsOfFile: path) {
+            if let API_URL = plist["API_URL"] {
+                if let JWT_token = plist["JWT_token"] { // 取得jwt token
+                    
+                    //要送出的資料
+                    let json: [String: Any] = ["uid" : self.UID ?? -1,
+                                               "LFt" : "2018-08-08T08:08:08.1234567+08:00"] //選起始資料，隨便給個很久以前的時間
+                    let jsonData = try? JSONSerialization.data(withJSONObject: json)
+                    
+                    print(String(data: jsonData!, encoding: .utf8)!)
+                    
+                    //指定api的url
+                    let url = URL(string: ((API_URL as! String) + "api/chat2/receive"))
+                    
+                    var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+                    request.setValue(("Bearer " + (JWT_token as! String)), forHTTPHeaderField: "Authorization")
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.httpBody = jsonData
+                    request.httpMethod = "POST"
+                    
+                    // 使用預設的設定建立 session
+                    let config = URLSessionConfiguration.default
+                    let session = URLSession(configuration: config)
+                    
+                    // NSURLSessionDataTask 為讀取資料，讀取完成的資料會放在 data 中
+                    let dataTask = session.dataTask(with: request) { (data, response, error) in
+                        if let data = data {
+                            do {
+                                // 解析 JSON
+                                
+                                print(String(data: data, encoding: .utf8)!)
+                                
+                                let jsonObj = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary // 字典
+                                
+                                print(jsonObj["UTCtime"] as! String)
+                                self.LastUpdateT = (jsonObj["UTCtime"] as! String)
+                                
+                                
+                                let charMsgs = jsonObj["chatMsgs"] as! Array<Dictionary<String, AnyObject>>
+//                                for p in charMsgs {
+//                                    print(p["exp"] as! String)
+//                                    print(p["msg"] as! String)
+//                                    print(p["isMyMsg"] as! Bool)
+//                                }
+                                self.ChatMsgList = charMsgs
+                                //sleep(5)
+                                semaphore.signal() //sync
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                    
+                    // 開始讀取資料
+                    dataTask.resume()
+                    
+                    // 利用它載入資料的時間，設定下拉更新:
+                    //tableView080.refreshControl = UIRefreshControl()
+                    //tableView080.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+                    // 設定完畢.
+                    
+                    //semaphore.wait() //sync
+                }
+            }
+        }
         
         navigationItem.title = "Message"
         //navigationController?.navigationBar.prefersLargeTitles = true
@@ -69,7 +124,8 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHandler), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         msgBar.sendBtn.addTarget(self, action: #selector(sendBtnClick), for: .touchUpInside)
-        
+        semaphore.wait() //sync
+               
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -93,8 +149,11 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
                 if isShowing {
-                    let idx = IndexPath(row: self.textMsgs.count - 1, section: 0)
-                    self.tableView080.scrollToRow(at: idx, at: .bottom, animated: true)
+                    if(self.ChatMsgList.count > 0)
+                    {
+                        let idx = IndexPath(row: self.ChatMsgList.count - 1, section: 0)
+                        self.tableView080.scrollToRow(at: idx, at: .bottom, animated: true)
+                    }
                 }
             })
         }
@@ -113,7 +172,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                 if let JWT_token = plist["JWT_token"] { // 取得jwt token
                     
                     //要送出的資料
-                    let json: [String: Any] = ["uid" : self.UID ?? 0,
+                    let json: [String: Any] = ["uid" : self.UID ?? -1,
                                                "message" : self.msgBar.textBox.text ?? "",
                                                "eff_period" : self.eff_t ?? ""]
                     let jsonData = try? JSONSerialization.data(withJSONObject: json)
@@ -175,7 +234,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return textMsgs.count
+        return ChatMsgList.count
     }
     
     
@@ -183,8 +242,8 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "id2", for: indexPath) as!ChatMsgTableViewCell
         
         // Configure the cell...
-        cell.msgLabel.text = textMsgs[indexPath.row]
-        cell.isMyMsg = indexPath.row % 2 == 0
+        cell.msgLabel.text = (ChatMsgList[indexPath.row]["msg"] as! String)
+        cell.isMyMsg = (ChatMsgList[indexPath.row]["isMyMsg"] as! Bool)
         
         return cell
     }

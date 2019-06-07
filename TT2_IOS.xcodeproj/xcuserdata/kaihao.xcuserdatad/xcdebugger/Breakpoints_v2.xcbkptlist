@@ -343,11 +343,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/ChatMsgViewController.swift"
-            timestampString = "581586330.968466"
+            timestampString = "581592176.083461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "sendBtnClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -359,11 +359,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/ChatMsgViewController.swift"
-            timestampString = "581586330.969169"
+            timestampString = "581592176.084195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "sendBtnClick(_:)"
             landmarkType = "7">
             <Locations>
@@ -407,11 +407,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/ChatMsgViewController.swift"
-            timestampString = "581586330.969581"
+            timestampString = "581592176.0847059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "sendBtnClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -423,11 +423,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/ChatMsgViewController.swift"
-            timestampString = "581586330.969969"
+            timestampString = "581592176.0851949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "sendBtnClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -439,12 +439,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TT2_IOS/ChatMsgViewController.swift"
-            timestampString = "581586330.970345"
+            timestampString = "581592176.0856479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "sendBtnClick(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TT2_IOS/ChatMsgViewController.swift"
+            timestampString = "581592176.086109"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
