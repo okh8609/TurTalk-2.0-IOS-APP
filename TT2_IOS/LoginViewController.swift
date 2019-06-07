@@ -24,6 +24,12 @@ class LoginViewController: UIViewController {
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.3) {
+            self.view.endEditing(true)
+        }
+    }
+    
     @IBAction func unwindToLogin(for segue: UIStoryboardSegue) {
         
     }
