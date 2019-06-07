@@ -17,6 +17,11 @@ class ChatTimerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     let SS = Array(0...59)
     var effTime = [Int](repeating:0, count: 3) // HH:MM:SS
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -11,6 +11,7 @@ import UIKit
 class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView080: UITableView!
+    var magBarBtmConstraint: NSLayoutConstraint?
     
     let textMsgs = ["1111 111 11111 1111 11 111111 11111 11111 111111",
                     "22222 222 2222 2222 2222 22 22222 222222222 222 22222",
@@ -25,7 +26,21 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                     "222 22222 22222 222 222222 222222 2 2222222 22 222222",
                     "3333 333 33333 33333 33333 333 33333333 333"]
     
-    
+    let msgBar: UIView = {
+        let theView = UIView()
+        theView.backgroundColor = UIColor.lightGray
+        
+        let textBox = UITextField()
+        textBox.placeholder = "Enter message..."
+        textBox.translatesAutoresizingMaskIntoConstraints = false
+        theView.addSubview(textBox)
+        textBox.leadingAnchor.constraint(equalTo: theView.leadingAnchor, constant: 16).isActive = true
+        textBox.trailingAnchor.constraint(equalTo: theView.trailingAnchor, constant: 0).isActive = true
+        textBox.bottomAnchor.constraint(equalTo: theView.bottomAnchor, constant: 0).isActive = true
+        textBox.topAnchor.constraint(equalTo: theView.topAnchor, constant: 0).isActive = true
+        
+        return theView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +53,35 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView080.backgroundColor = UIColor(white: 0.95, alpha: 1)
         
         tabBarController?.tabBar.isHidden = true
+        
+        msgBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(msgBar)
+        msgBar.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        msgBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        msgBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        magBarBtmConstraint = NSLayoutConstraint(item: msgBar, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        view.addConstraint(magBarBtmConstraint!)
+        //msgBar.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        //msgBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShowHandler), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc func keyboardShowHandler(notification: NSNotification)
+    {
+        if let userInfo = notification.userInfo{
+            
+            let keyboardFrame = ((userInfo[UIResponder.keyboardFrameEndUserInfoKey]) as AnyObject).cgRectValue
+            print(keyboardFrame!)
+            
+            magBarBtmConstraint?.constant = -keyboardFrame!.height
+        }
     }
     
     // MARK: - Table view data source
