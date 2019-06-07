@@ -12,7 +12,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
 
     var UID: Int?
     var eff_t: String?
-    var LastUpdateT: String?
+    var LastFetchT: String?
     var ChatMsgList: Array<Dictionary<String, AnyObject>> = []
     
     @IBOutlet weak var tableView080: UITableView!
@@ -21,6 +21,8 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
     let msgBar = MsgInputBarUIView()
     let msgBarHeight = CGFloat(48)
     var magBarBtmConstraint: NSLayoutConstraint?
+    
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                                 let jsonObj = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary // 字典
                                 
                                 print(jsonObj["UTCtime"] as! String)
-                                self.LastUpdateT = (jsonObj["UTCtime"] as! String)
+                                self.LastFetchT = (jsonObj["UTCtime"] as! String)
                                 
                                 
                                 let charMsgs = jsonObj["chatMsgs"] as! Array<Dictionary<String, AnyObject>>
@@ -84,11 +86,6 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     // 開始讀取資料
                     dataTask.resume()
-                    
-                    // 利用它載入資料的時間，設定下拉更新:
-                    //tableView080.refreshControl = UIRefreshControl()
-                    //tableView080.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
-                    // 設定完畢.
                     
                     //semaphore.wait() //sync
                 }
@@ -124,6 +121,9 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHandler), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         msgBar.sendBtn.addTarget(self, action: #selector(sendBtnClick), for: .touchUpInside)
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(handleRefresh), userInfo: nil, repeats: true)
+        
         semaphore.wait() //sync
                
         // Uncomment the following line to preserve selection between presentations
@@ -131,6 +131,13 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        // 將timer的執行緒停止
+        if self.timer != nil {
+            self.timer?.invalidate()
+        }
     }
     
     @objc func keyboardHandler(notification: NSNotification)
@@ -149,6 +156,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
                 if isShowing {
+                    // scroll to bottom
                     if(self.ChatMsgList.count > 0)
                     {
                         let idx = IndexPath(row: self.ChatMsgList.count - 1, section: 0)
@@ -200,11 +208,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                             print(rrr!)
                             if(rrr == "true")
                             {
-                                // 更新table view
-                                DispatchQueue.main.async{
-                                        
-                                        
-                                }
+                                self.timer?.fire()
                             }
                         }
                     }
@@ -213,6 +217,62 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                     dataTask.resume()
                     
                     msgBar.textBox.text = ""
+                }
+            }
+        }
+    }
+    
+    @objc func handleRefresh() {
+        let path = NSHomeDirectory() + "/Documents/Helper.plist"
+        if let plist = NSMutableDictionary(contentsOfFile: path) {
+            if let API_URL = plist["API_URL"] {
+                if let JWT_token = plist["JWT_token"] { // 取得jwt token
+                    
+                    //要送出的資料
+                    let json: [String: Any] = ["uid" : self.UID ?? -1,
+                                               "LFt" : LastFetchT ?? "2018-08-08T08:08:08.1234567+08:00"]
+                    let jsonData = try? JSONSerialization.data(withJSONObject: json)
+                    
+                    //指定api的url
+                    let url = URL(string: ((API_URL as! String) + "api/chat2/receive"))
+                    
+                    var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+                    request.setValue(("Bearer " + (JWT_token as! String)), forHTTPHeaderField: "Authorization")
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.httpBody = jsonData
+                    request.httpMethod = "POST"
+                    
+                    // 使用預設的設定建立 session
+                    let config = URLSessionConfiguration.default
+                    let session = URLSession(configuration: config)
+                    
+                    // NSURLSessionDataTask 為讀取資料，讀取完成的資料會放在 data 中
+                    let dataTask = session.dataTask(with: request) { (data, response, error) in
+                        if let data = data {
+                            do {
+                                let jsonObj = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary // 字典
+                                
+                                self.LastFetchT = (jsonObj["UTCtime"] as! String)
+                                
+                                let charMsgs = jsonObj["chatMsgs"] as! Array<Dictionary<String, AnyObject>>
+                                self.ChatMsgList += charMsgs //array concatenate (陣列串連) ??? 在同步執行的狀況下 可能會有重複的哦
+                                
+                                DispatchQueue.main.async {
+                                    self.tableView080.reloadData()
+                                    
+                                    // scroll to bottom
+                                    if(self.ChatMsgList.count > 0)
+                                    {
+                                        let idx = IndexPath(row: self.ChatMsgList.count - 1, section: 0)
+                                        self.tableView080.scrollToRow(at: idx, at: .bottom, animated: false)
+                                    }
+                                }
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                    dataTask.resume()
                 }
             }
         }
