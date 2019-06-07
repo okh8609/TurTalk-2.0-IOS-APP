@@ -68,6 +68,8 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHandler), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHandler), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        msgBar.sendBtn.addTarget(self, action: #selector(sendBtnClick), for: .touchUpInside)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -95,6 +97,65 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.tableView080.scrollToRow(at: idx, at: .bottom, animated: true)
                 }
             })
+        }
+    }
+    
+    @objc func sendBtnClick(_ sender: UIButton) {
+        if( self.msgBar.textBox.text=="" || self.msgBar.textBox.text == nil)
+        {
+            print("empty msg!")
+            return
+        }
+        
+        let path = NSHomeDirectory() + "/Documents/Helper.plist"
+        if let plist = NSMutableDictionary(contentsOfFile: path) {
+            if let API_URL = plist["API_URL"] {
+                if let JWT_token = plist["JWT_token"] { // 取得jwt token
+                    
+                    //要送出的資料
+                    let json: [String: Any] = ["uid" : self.UID ?? 0,
+                                               "message" : self.msgBar.textBox.text ?? "",
+                                               "eff_period" : self.eff_t ?? ""]
+                    let jsonData = try? JSONSerialization.data(withJSONObject: json)
+                    
+                    print(String(data: jsonData!, encoding: .utf8)!)
+                    
+                    //指定api的url
+                    let url = URL(string: ((API_URL as! String) + "api/chat2/send"))
+                    
+                    var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+                    request.setValue(("Bearer " + (JWT_token as! String)), forHTTPHeaderField: "Authorization")
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.httpBody = jsonData
+                    request.httpMethod = "POST"
+                    
+                    
+                    // 使用預設的設定建立 session
+                    let config = URLSessionConfiguration.default
+                    let session = URLSession(configuration: config)
+                    
+                    // NSURLSessionDataTask 為讀取資料，讀取完成的資料會放在 data 中
+                    let dataTask = session.dataTask(with: request) { (data, response, error) in
+                        if let data = data {
+                            let rrr = String(data: data, encoding: .utf8)
+                            print(rrr!)
+                            if(rrr == "true")
+                            {
+                                // 更新table view
+                                DispatchQueue.main.async{
+                                        
+                                        
+                                }
+                            }
+                        }
+                    }
+                    
+                    // 開始讀取資料
+                    dataTask.resume()
+                    
+                    msgBar.textBox.text = ""
+                }
+            }
         }
     }
     
