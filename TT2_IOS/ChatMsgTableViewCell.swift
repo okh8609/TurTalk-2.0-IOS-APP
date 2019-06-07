@@ -13,18 +13,24 @@ class ChatMsgTableViewCell: UITableViewCell {
     let msgLabel = UILabel()
     let bgView = UIView()
     
+    var alignLeftConstraint : NSLayoutConstraint!
+    var alignRightConstraint : NSLayoutConstraint!
+    
     var isMyMsg: Bool!
     {
         didSet {
             bgView.backgroundColor = isMyMsg ? .darkGray : .white
             msgLabel.textColor = isMyMsg ? .white : .black
+            
             if isMyMsg
             {
-                msgLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
+                alignRightConstraint.isActive = true
+                alignLeftConstraint.isActive = false
             }
             else
             {
-                msgLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32).isActive = true
+                alignLeftConstraint.isActive = true
+                alignRightConstraint.isActive = false
             }
         }
     }
@@ -58,7 +64,10 @@ class ChatMsgTableViewCell: UITableViewCell {
                            bgView.bottomAnchor.constraint(equalTo: msgLabel.bottomAnchor, constant: 16),
                            bgView.trailingAnchor.constraint(equalTo: msgLabel.trailingAnchor, constant: 16)]
         
-        NSLayoutConstraint.activate(constraints) 
+        NSLayoutConstraint.activate(constraints)
+        
+        alignRightConstraint = msgLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32)
+        alignLeftConstraint = msgLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -76,5 +85,5 @@ class ChatMsgTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-     */
+    */
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94F2C0CEA64F20E72DF769C1 /* Pods_TT2_IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F06DF10CD1D57966E01D8C /* Pods_TT2_IOS.framework */; };
 		B5028EFD22965EB900743C98 /* InvCodeGenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5028EFC22965EB900743C98 /* InvCodeGenViewController.swift */; };
 		B5028EFF2296C0A100743C98 /* FriendListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5028EFE2296C0A100743C98 /* FriendListTableViewController.swift */; };
 		B5028F012296C0C000743C98 /* FriendSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5028F002296C0C000743C98 /* FriendSearchTableViewController.swift */; };
@@ -22,6 +21,7 @@
 		B5329CEA22930B25009222AF /* TT_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5329CE922930B24009222AF /* TT_Logo.png */; };
 		B53D30DB22A8EE3200F9C08B /* ChatMsgTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53D30DA22A8EE3200F9C08B /* ChatMsgTableViewController.swift */; };
 		B53D30DD22A8F28F00F9C08B /* ChatMsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53D30DC22A8F28F00F9C08B /* ChatMsgTableViewCell.swift */; };
+		B564DB7222A972DC00E43A82 /* ChatMsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564DB7122A972DC00E43A82 /* ChatMsgViewController.swift */; };
 		B5C66555229415E400041B6A /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C66554229415E400041B6A /* RegViewController.swift */; };
 		B5C66557229420D900041B6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C66556229420D900041B6A /* LoginViewController.swift */; };
 		B5C6655922942F4F00041B6A /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6655822942F4F00041B6A /* InviteViewController.swift */; };
@@ -30,9 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		39DD4B07BAA88C938897BC2F /* Pods-TT2_IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TT2_IOS.debug.xcconfig"; path = "Target Support Files/Pods-TT2_IOS/Pods-TT2_IOS.debug.xcconfig"; sourceTree = "<group>"; };
-		46F06DF10CD1D57966E01D8C /* Pods_TT2_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TT2_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80BDE9A84889F1A7780D2AA7 /* Pods-TT2_IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TT2_IOS.release.xcconfig"; path = "Target Support Files/Pods-TT2_IOS/Pods-TT2_IOS.release.xcconfig"; sourceTree = "<group>"; };
 		B5028EFC22965EB900743C98 /* InvCodeGenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvCodeGenViewController.swift; sourceTree = "<group>"; };
 		B5028EFE2296C0A100743C98 /* FriendListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewController.swift; sourceTree = "<group>"; };
 		B5028F002296C0C000743C98 /* FriendSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTableViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +46,7 @@
 		B5329CE922930B24009222AF /* TT_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TT_Logo.png; sourceTree = "<group>"; };
 		B53D30DA22A8EE3200F9C08B /* ChatMsgTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMsgTableViewController.swift; sourceTree = "<group>"; };
 		B53D30DC22A8F28F00F9C08B /* ChatMsgTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMsgTableViewCell.swift; sourceTree = "<group>"; };
+		B564DB7122A972DC00E43A82 /* ChatMsgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMsgViewController.swift; sourceTree = "<group>"; };
 		B5C66554229415E400041B6A /* RegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 		B5C66556229420D900041B6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B5C6655822942F4F00041B6A /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94F2C0CEA64F20E72DF769C1 /* Pods_TT2_IOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,8 +68,6 @@
 		50C79B8603A81A0CD12F9CA3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				39DD4B07BAA88C938897BC2F /* Pods-TT2_IOS.debug.xcconfig */,
-				80BDE9A84889F1A7780D2AA7 /* Pods-TT2_IOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -83,7 +78,6 @@
 				B5329CD62292B2B6009222AF /* TT2_IOS */,
 				B5329CD52292B2B6009222AF /* Products */,
 				50C79B8603A81A0CD12F9CA3 /* Pods */,
-				CE918BFDDE2D8F73FD52D501 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,16 +112,9 @@
 				B5C8CA3D22A7719400C8834F /* ChatTimerViewController.swift */,
 				B53D30DA22A8EE3200F9C08B /* ChatMsgTableViewController.swift */,
 				B53D30DC22A8F28F00F9C08B /* ChatMsgTableViewCell.swift */,
+				B564DB7122A972DC00E43A82 /* ChatMsgViewController.swift */,
 			);
 			path = TT2_IOS;
-			sourceTree = "<group>";
-		};
-		CE918BFDDE2D8F73FD52D501 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				46F06DF10CD1D57966E01D8C /* Pods_TT2_IOS.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,11 +124,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5329CE62292B2B8009222AF /* Build configuration list for PBXNativeTarget "TT2_IOS" */;
 			buildPhases = (
-				7974F74FCFB08AD175591F85 /* [CP] Check Pods Manifest.lock */,
 				B5329CD02292B2B6009222AF /* Sources */,
 				B5329CD12292B2B6009222AF /* Frameworks */,
 				B5329CD22292B2B6009222AF /* Resources */,
-				5DE08FE3F4EB394EBED31AA2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,48 +185,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		5DE08FE3F4EB394EBED31AA2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TT2_IOS/Pods-TT2_IOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TT2_IOS/Pods-TT2_IOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TT2_IOS/Pods-TT2_IOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7974F74FCFB08AD175591F85 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TT2_IOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		B5329CD02292B2B6009222AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -253,6 +196,7 @@
 				B53D30DD22A8F28F00F9C08B /* ChatMsgTableViewCell.swift in Sources */,
 				B5329CD82292B2B6009222AF /* AppDelegate.swift in Sources */,
 				B5028F012296C0C000743C98 /* FriendSearchTableViewController.swift in Sources */,
+				B564DB7222A972DC00E43A82 /* ChatMsgViewController.swift in Sources */,
 				B502C53D22A6A6F300A7A38D /* ChatListTableViewController.swift in Sources */,
 				B5C66555229415E400041B6A /* RegViewController.swift in Sources */,
 				B5028EFF2296C0A100743C98 /* FriendListTableViewController.swift in Sources */,
@@ -404,7 +348,6 @@
 		};
 		B5329CE72292B2B8009222AF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39DD4B07BAA88C938897BC2F /* Pods-TT2_IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -424,7 +367,6 @@
 		};
 		B5329CE82292B2B8009222AF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80BDE9A84889F1A7780D2AA7 /* Pods-TT2_IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="unL-c7-luY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIl-QH-LbX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -330,7 +330,7 @@
                                 </state>
                                 <connections>
                                     <action selector="SubmitClick:" destination="2Oy-kN-LT9" eventType="touchUpInside" id="avN-pk-Xpr"/>
-                                    <segue destination="unL-c7-luY" kind="show" id="q1u-jN-3nE"/>
+                                    <segue destination="ILB-i5-BrA" kind="show" id="lsQ-V8-4HB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -342,33 +342,34 @@
             </objects>
             <point key="canvasLocation" x="1694" y="1282"/>
         </scene>
-        <!--Chat Msg Table View Controller-->
-        <scene sceneID="asn-y2-GTb">
+        <!--Chat Msg View Controller-->
+        <scene sceneID="rkf-fq-ECO">
             <objects>
-                <tableViewController id="unL-c7-luY" customClass="ChatMsgTableViewController" customModule="TT2_IOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dfk-LF-nb5">
+                <viewController id="ILB-i5-BrA" customClass="ChatMsgViewController" customModule="TT2_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nat-gV-XVw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HNT-5b-rNf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ILB-i5-BrA" id="Fwd-ty-W7O"/>
+                                    <outlet property="delegate" destination="ILB-i5-BrA" id="ZRT-Rt-39r"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="id" id="kNU-A4-OZ4">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kNU-A4-OZ4" id="GXg-S7-LxK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="unL-c7-luY" id="r1B-Vy-gC3"/>
-                            <outlet property="delegate" destination="unL-c7-luY" id="Cjv-05-mDW"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oeE-w6-Aip" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <viewLayoutGuide key="safeArea" id="UHs-vh-Jzl"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView080" destination="HNT-5b-rNf" id="kZU-Nl-LFG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEM-vl-eKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2676" y="1281"/>
+            <point key="canvasLocation" x="2568.8000000000002" y="1280.5097451274364"/>
         </scene>
         <!--Profile Table View Controller-->
         <scene sceneID="czi-AO-zA9">

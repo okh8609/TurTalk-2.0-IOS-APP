@@ -1,15 +1,17 @@
 //
-//  ChatTableViewController.swift
+//  ChatMsgViewController.swift
 //  TT2_IOS
 //
-//  Created by KaiHao  on 2019/6/5.
+//  Created by KaiHao  on 2019/6/6.
 //  Copyright © 2019 NTUST. All rights reserved.
 //
 
 import UIKit
 
-class ChatMsgTableViewController: UITableViewController {
+class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView080: UITableView!
+    
     let textMsgs = ["1111 111 11111 1111 11 111111 11111 11111 111111",
                     "22222 222 2222 2222 2222 22 22222 222222222 222 22222",
                     "333 3333 333 333 3333 33333 333333 333 33333",
@@ -23,42 +25,44 @@ class ChatMsgTableViewController: UITableViewController {
                     "222 22222 22222 222 222222 222222 2 2222222 22 222222",
                     "3333 333 33333 33333 33333 333 33333333 333"]
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Message"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.prefersLargeTitles = true
         
-        tableView.register(ChatMsgTableViewCell.self, forCellReuseIdentifier: "id2")
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        tableView080.register(ChatMsgTableViewCell.self, forCellReuseIdentifier: "id2")
+        tableView080.separatorStyle = .none
+        tableView080.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        
+        tabBarController?.tabBar.isHidden = true
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return textMsgs.count
     }
-
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "id2", for: indexPath) as!ChatMsgTableViewCell
-
+        
         // Configure the cell...
-
+        
         //cell.textLabel?.text = "TTTT TTTT TTTT"
         //cell.textLabel?.numberOfLines = 0
         cell.msgLabel.text = textMsgs[indexPath.row]
@@ -67,41 +71,6 @@ class ChatMsgTableViewController: UITableViewController {
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
