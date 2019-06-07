@@ -11,10 +11,14 @@ import UIKit
 class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView080: UITableView!
-    var magBarBtmConstraint: NSLayoutConstraint?
-    let msgBar = MsgInputBarUIView()
+    var tableView080BtmConstraint: NSLayoutConstraint?
     
-    let textMsgs = ["1111 111 11111 1111 11 111111 11111 11111 111111",
+    let msgBar = MsgInputBarUIView()
+    let msgBarHeight = CGFloat(48)
+    var magBarBtmConstraint: NSLayoutConstraint?
+
+    
+    let textMsgs = ["@1111 111 11111 1111 11 111111 11111 11111 111111",
                     "22222 222 2222 2222 2222 22 22222 222222222 222 22222",
                     "333 3333 333 333 3333 33333 333333 333 33333",
                     "11 111 11 11 111 1111 1111 111 11111 111 111 111111",
@@ -25,23 +29,29 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                     "333 3333 333 333 3333 333 33333 333333 33333",
                     "1111 11 1111111 1111 1111 11 1111 1111 1111 11111",
                     "222 22222 22222 222 222222 222222 2 2222222 22 222222",
-                    "3333 333 33333 33333 33333 333 33333333 333"]
+                    "3333 333 33333 33333 33333 333 33333333 333@"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Message"
         //navigationController?.navigationBar.prefersLargeTitles = true
+        tabBarController?.tabBar.isHidden = true
         
         tableView080.register(ChatMsgTableViewCell.self, forCellReuseIdentifier: "id2")
         tableView080.separatorStyle = .none
         tableView080.backgroundColor = UIColor(white: 0.95, alpha: 1)
         
-        tabBarController?.tabBar.isHidden = true
+        tableView080.translatesAutoresizingMaskIntoConstraints = false
+        tableView080.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        tableView080BtmConstraint = NSLayoutConstraint(item: tableView080, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -msgBarHeight)
+        view.addConstraint(tableView080BtmConstraint!)
+        tableView080.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        tableView080.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         
         msgBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(msgBar)
-        msgBar.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        msgBar.heightAnchor.constraint(equalToConstant: msgBarHeight).isActive = true
         msgBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         msgBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         magBarBtmConstraint = NSLayoutConstraint(item: msgBar, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
@@ -68,16 +78,21 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
             
             let isShowing = notification.name == UIResponder.keyboardWillShowNotification
             
+            tableView080BtmConstraint?.constant = isShowing ? (-keyboardFrame!.height - msgBarHeight) : (-msgBarHeight)
             magBarBtmConstraint?.constant = isShowing ? -keyboardFrame!.height : 0
             
             UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
-                //
+                if isShowing {
+                    let idx = IndexPath(row: self.textMsgs.count - 1, section: 0)
+                    self.tableView080.scrollToRow(at: idx, at: .bottom, animated: true)
+                }
             })
         }
     }
     
+    //按下item
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //magBarBtmConstraint?.constant = 0
         msgBar.textBox.endEditing(true)
