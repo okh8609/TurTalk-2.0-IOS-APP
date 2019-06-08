@@ -91,7 +91,6 @@ class ChatListTableViewController: UITableViewController {
                     let config = URLSessionConfiguration.default
                     let session = URLSession(configuration: config)
                     
-                    let semaphore = DispatchSemaphore(value: 0) //sync
                     // NSURLSessionDataTask 為讀取資料，讀取完成的資料會放在 data 中
                     let dataTask = session.dataTask(with: request) { (data, response, error) in
                         if let data = data {
@@ -106,7 +105,12 @@ class ChatListTableViewController: UITableViewController {
                                     print("Count: \(r["count"] as! Int)")
                                 }
                                 
-                                semaphore.signal() //sync
+                                DispatchQueue.main.async { // Correct
+                                    // 停止下拉後的動畫特效並復原表格位置
+                                    self.tableView.refreshControl?.endRefreshing()
+                                    // 要表格重新載入資料
+                                    self.tableView.reloadData()
+                                }
                             } catch {
                                 print(error.localizedDescription)
                             }
@@ -115,15 +119,11 @@ class ChatListTableViewController: UITableViewController {
                     
                     // 開始讀取資料
                     dataTask.resume()
-                    semaphore.wait() //sync
                 }
             }
         }
         
-        // 停止下拉後的動畫特效並復原表格位置
-        tableView.refreshControl?.endRefreshing()
-        // 要表格重新載入資料
-        tableView.reloadData()
+
     }
 
 
