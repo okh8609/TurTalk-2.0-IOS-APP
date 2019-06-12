@@ -24,6 +24,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
     var magBarBtmConstraint: NSLayoutConstraint?
     
     var timer: Timer?
+    let update_semaphore = DispatchSemaphore(value: 1) //sync
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +119,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
         
         msgBar.sendBtn.addTarget(self, action: #selector(sendBtnClick), for: .touchUpInside)
         
-        self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(handleRefresh), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(handleRefresh), userInfo: nil, repeats: true)
         
         semaphore.wait() //sync
                
@@ -225,6 +226,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                 if let JWT_token = plist["JWT_token"] { // 取得jwt token
                     
                     //要送出的資料
+                    update_semaphore.wait() //sync
                     let json: [String: Any] = ["uid" : self.UID ?? -1,
                                                "LFt" : LastFetchT ?? "2018-08-08T08:08:08.1234567+08:00"]
                     let jsonData = try? JSONSerialization.data(withJSONObject: json)
@@ -249,6 +251,7 @@ class ChatMsgViewController: UIViewController, UITableViewDataSource, UITableVie
                                 let jsonObj = try JSONSerialization.jsonObject(with: data, options: []) as! NSDictionary // 字典
                                 
                                 self.LastFetchT = (jsonObj["UTCtime"] as! String)
+                                self.update_semaphore.signal() //sync
                                 
                                 let charMsgs = jsonObj["chatMsgs"] as! Array<Dictionary<String, AnyObject>>
                                 self.ChatMsgList += charMsgs //array concatenate (陣列串連) ??? 在同步執行的狀況下 可能會有重複的哦

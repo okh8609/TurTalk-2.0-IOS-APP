@@ -89,9 +89,9 @@ class ChatTimerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
     }
     @IBAction func okBtnClick(_ sender: UIButton) {
-        if (((effTime[0] * 60 + effTime[1]) * 60 + effTime[2]) < 15)
+        if (((effTime[0] * 60 + effTime[1]) * 60 + effTime[2]) < 5)
         {
-            let alertBox = UIAlertController(title: "Error", message: "Message effective time must at least 15 seconds.", preferredStyle: .alert)
+            let alertBox = UIAlertController(title: "Error", message: "Message effective time must at least 5 seconds.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertBox.addAction(okAction)
             self.present(alertBox, animated: true, completion: nil)
